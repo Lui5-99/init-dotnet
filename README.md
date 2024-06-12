@@ -255,6 +255,3 @@ Finalmente, ejecuta la aplicación:
 ```bash
 dotnet run --project MyProject.Api/MyProject.Api.csproj
 ```
-
-```bash
-dotnet run --project MyProject.Api/MyProject.Api.csproj
