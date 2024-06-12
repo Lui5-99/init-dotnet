@@ -61,8 +61,37 @@ Asegúrate de tener instalada la última versión del SDK de .NET. Puedes descar
     dotnet add MyProject.Api/MyProject.Api.csproj reference MyProject.Application/MyProject.Application.csproj
     dotnet add MyProject.Api/MyProject.Api.csproj reference MyProject.Persistence/MyProject.Persistence.csproj
     ```
+## Paso 4: Instalar EntityFramework Core
+Dependiendo la base de datos que vayas a utilizar, instala los paquetes correspondientes.
 
-## Paso 4: Configurar las capas
+### SQL Server
+```bash
+dotnet add MyProject.Persistence/MyProject.Persistence.csproj package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add MyProject.Api/MyProject.Api.csproj package Microsoft.EntityFrameworkCore.SqlServer
+```
+### MySQL
+```bash
+dotnet add MyProject.Persistence/MyProject.Persistence.csproj package Pomelo.EntityFrameworkCore.MySql
+dotnet add MyProject.Api/MyProject.Api.csproj package Pomelo.EntityFrameworkCore.MySql
+```
+### SQLite
+```bash
+dotnet add MyProject.Persistence/MyProject.Persistence.csproj package Microsoft.EntityFrameworkCore.Sqlite
+dotnet add MyProject.Api/MyProject.Api.csproj package Microsoft.EntityFrameworkCore.Sqlite
+```
+### PostgreSQL
+```bash
+dotnet add MyProject.Persistence/MyProject.Persistence.csproj package Npgsql.EntityFrameworkCore.PostgreSQL
+dotnet add MyProject.Api/MyProject.Api.csproj package Npgsql.EntityFrameworkCore.PostgreSQL
+```
+### MongoDB
+```bash
+dotnet add MyProject.Persistence/MyProject.Persistence.csproj package MongoDB.Driver
+dotnet add MyProject.Api/MyProject.Api.csproj package MongoDB.Driver
+
+```
+
+## Paso 5: Configurar las capas
 
 1. **Domain Layer**: Aquí defines tus entidades y objetos de valor.
 
@@ -135,7 +164,7 @@ Asegúrate de tener instalada la última versión del SDK de .NET. Puedes descar
       }
       ```
 
-## Paso 5: Configurar la Web API para usar los servicios
+## Paso 6: Configurar la Web API para usar los servicios
 
 1. **Configurar Dependency Injection**:
 
@@ -209,9 +238,12 @@ Asegúrate de tener instalada la última versión del SDK de .NET. Puedes descar
       }
       ```
 
-## Paso 6: Ejecutar la aplicación
+## Paso 7: Ejecutar la aplicación
 
 Finalmente, ejecuta la aplicación:
+```bash
+dotnet run --project MyProject.Api/MyProject.Api.csproj
+```
 
 ```bash
 dotnet run --project MyProject.Api/MyProject.Api.csproj
