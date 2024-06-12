@@ -43,24 +43,19 @@ Asegúrate de tener instalada la última versión del SDK de .NET. Puedes descar
 
 ## Paso 3: Configurar las referencias entre los proyectos
 
-1. **Agregar referencia de Domain a Application**:
+1. **Agregar referencia de Persistence a Domain**:
 
     ```bash
-    dotnet add MyProject.Application/MyProject.Application.csproj reference MyProject.Domain/MyProject.Domain.csproj
+    dotnet add MyProject.Application/MyProject.Persistence.csproj reference MyProject.Domain/MyProject.Domain.csproj
     ```
 
-2. **Agregar referencia de Persistence a Application**:
+2. **Agregar referencia de Persistence y Domain a Application**:
 
     ```bash
     dotnet add MyProject.Application/MyProject.Application.csproj reference MyProject.Persistence/MyProject.Persistence.csproj
-    ```    
-
-2. **Agregar referencia de Application a Persistence**:
-
-    ```bash
-    dotnet add MyProject.Persistence/MyProject.Persistence.csproj reference MyProject.Application/MyProject.Application.csproj
+    dotnet add MyProject.Application/MyProject.Application.csproj reference MyProject.Domain/MyProject.Persistence.csproj
     ```
-
+    
 3. **Agregar referencia de Application y Persistence a la Web API**:
 
     ```bash
