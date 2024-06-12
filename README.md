@@ -68,6 +68,16 @@ Asegúrate de tener instalada la última versión del SDK de .NET. Puedes descar
     dotnet add MyProject.Api/MyProject.Api.csproj reference MyProject.Persistence/MyProject.Persistence.csproj
     ```
 ## Paso 4: Instalar EntityFramework Core
+```bash
+dotnet add MyProject.Persistence/MyProject.Persistence.csproj package Microsoft.EntityFrameworkCore
+dotnet add MyProject.Api/MyProject.Api.csproj package Microsoft.EntityFrameworkCore
+```
+
+```bash
+dotnet add MyProject.Persistence/MyProject.Persistence.csproj package Microsoft.EntityFrameworkCore.Tools
+dotnet add MyProject.Api/MyProject.Api.csproj package Microsoft.EntityFrameworkCore.Tools
+```
+
 Dependiendo la base de datos que vayas a utilizar, instala los paquetes correspondientes.
 
 ### SQL Server
