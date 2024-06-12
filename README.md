@@ -49,6 +49,12 @@ Asegúrate de tener instalada la última versión del SDK de .NET. Puedes descar
     dotnet add MyProject.Application/MyProject.Application.csproj reference MyProject.Domain/MyProject.Domain.csproj
     ```
 
+2. **Agregar referencia de Persistence a Application**:
+
+    ```bash
+    dotnet add MyProject.Application/MyProject.Application.csproj reference MyProject.Persistence/MyProject.Persistence.csproj
+    ```    
+
 2. **Agregar referencia de Application a Persistence**:
 
     ```bash
