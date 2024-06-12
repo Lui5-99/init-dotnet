@@ -88,7 +88,11 @@ dotnet add MyProject.Api/MyProject.Api.csproj package Npgsql.EntityFrameworkCore
 ```bash
 dotnet add MyProject.Persistence/MyProject.Persistence.csproj package MongoDB.Driver
 dotnet add MyProject.Api/MyProject.Api.csproj package MongoDB.Driver
-
+```
+### En Memoria
+```bash
+dotnet add MyProject.Persistence/MyProject.Persistence.csproj package Microsoft.EntityFrameworkCore.InMemory
+dotnet add MyProject.Api/MyProject.Api.csproj package Microsoft.EntityFrameworkCore.InMemory
 ```
 
 ## Paso 5: Configurar las capas
@@ -185,7 +189,14 @@ dotnet add MyProject.Api/MyProject.Api.csproj package MongoDB.Driver
 
       // Add DbContext
       builder.Services.AddDbContext<MyDbContext>(options =>
-          options.UseInMemoryDatabase("MyInMemoryDb"));
+      {
+            // Para SQL Server: options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            // Para MySql: options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"));
+            // Para SQLite: options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+            // Para PostgreSQL: options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+            // Para MongoDB: options.UseMongoDb(builder.Configuration.GetConnectionString("DefaultConnection"));
+            // Para InMemory: options.UseInMemoryDatabase("MyDababase.db");
+      });
 
       // Add Application Services
       builder.Services.AddScoped<IUserService, UserService>();
