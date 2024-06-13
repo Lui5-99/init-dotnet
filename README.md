@@ -4,7 +4,7 @@
 
 Asegúrate de tener instalada la última versión del SDK de .NET. Puedes descargarlo e instalarlo desde [aquí](https://dotnet.microsoft.com/download).
 
-## Paso 2: Crear la solución y los proyectos
+## Paso 2: Crear la solución y los proyectos o en su defecto usar el script python (generador.py) dejado en este repositorio y pasar al paso 5 
 
 1. **Crea una nueva solución**:
 
@@ -53,7 +53,7 @@ Asegúrate de tener instalada la última versión del SDK de .NET. Puedes descar
 
     ```bash
     dotnet add MyProject.Application/MyProject.Application.csproj reference MyProject.Persistence/MyProject.Persistence.csproj
-    dotnet add MyProject.Application/MyProject.Application.csproj reference MyProject.Domain/MyProject.Persistence.csproj
+    dotnet add MyProject.Application/MyProject.Application.csproj reference MyProject.Domain/MyProject.Domain.csproj
     ```
     
 3. **Agregar referencia de Application y Persistence a la Web API**:
