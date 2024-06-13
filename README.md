@@ -141,6 +141,8 @@ dotnet add MyProject.WebApi/MyProject.WebApi.csproj package Microsoft.EntityFram
    - `MyProject.Application/Interfaces/IUserService.cs`:
 
      ```csharp
+     using MyProject.Domain.Entities;
+
      namespace MyProject.Application.Interfaces
      {
          public interface IUserService
@@ -153,6 +155,10 @@ dotnet add MyProject.WebApi/MyProject.WebApi.csproj package Microsoft.EntityFram
    - `MyProject.Application/Services/UserService.cs`:
 
      ```csharp
+
+     using MyProject.Domain.Entities;
+     using MyProject.Application.Interfaces;
+
      namespace MyProject.Application.Services
      {
          public class UserService : IUserService
