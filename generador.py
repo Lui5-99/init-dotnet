@@ -26,7 +26,7 @@ def create_project(name_project):
   # Referencias entre proyectos
   comando_reference_domain_to_application = f"dotnet add {name_project}.Application/{name_project}.Application.csproj reference {name_project}.Domain/{name_project}.Domain.csproj"
   comando_reference_persistence_to_application = f"dotnet add {name_project}.Application/{name_project}.Application.csproj reference {name_project}.Persistence/{name_project}.Persistence.csproj"
-  comando_reference_persistence_to_domain = f"dotnet add {name_project}.Domain/{name_project}.Domain.csproj reference {name_project}.Persistence/{name_project}.Persistence.csproj"
+  comando_reference_domain_to_persistence = f"dotnet add {name_project}.Domain/{name_project}.Domain.csproj reference {name_project}.Persistence/{name_project}.Persistence.csproj"
   comando_reference_application_to_webapi = f"dotnet add {name_project}.WebApi/{name_project}.WebApi.csproj reference {name_project}.Application/{name_project}.Application.csproj"
   comando_reference_persistence_to_webapi = f"dotnet add {name_project}.WebApi/{name_project}.WebApi.csproj reference {name_project}.Persistence/{name_project}.Persistence.csproj"
   # Instalar paquetes
@@ -55,7 +55,7 @@ def create_project(name_project):
     # - Referencias
     subprocess.run(comando_reference_domain_to_application, shell=True, check=True)
     subprocess.run(comando_reference_persistence_to_application, shell=True, check=True)
-    subprocess.run(comando_reference_persistence_to_domain, shell=True, check=True)
+    subprocess.run(comando_reference_domain_to_persistence, shell=True, check=True)
     subprocess.run(comando_reference_application_to_webapi, shell=True, check=True)
     subprocess.run(comando_reference_persistence_to_webapi, shell=True, check=True)
     # - Instalar paquetes
