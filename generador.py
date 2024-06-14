@@ -1,13 +1,32 @@
 import os
 import subprocess
+from sys import platform
 
 def create_project(name_project):
-
   # Obtener la ruta del directorio actual
   current_dir = os.path.dirname(os.path.abspath(__file__))
 
   # Cambiar al directorio actual
   os.chdir(current_dir)
+
+  # Si en el nombre del proyecto hay espacios, reemplazarlos por guiones
+  name_project = name_project.replace(" ", "-")
+
+  # Si el nombre del proyecto es solo un punto (.), un guion (-) o una barra (/), asignarle el nombre del directorio actual
+  if name_project == "." or name_project == "-" or name_project == "/":
+    name_project = os.path.basename(current_dir) 
+
+  #revisar si el nombre del proyecto es igual al de la carpeta actual
+  # Si no es igual, crear una carpeta con el nombre del proyecto y moverse a ella
+  # Si es igual, no hacer nada
+  if name_project != os.path.basename(current_dir):
+    # Crear carpeta con el nombre del proyecto
+    try:
+      os.mkdir(name_project)
+    except FileExistsError:
+      print(f"La carpeta {name_project} ya existe")
+    # Moverse a la carpeta creada
+    os.chdir(name_project)  
 
   # Crear el proyecto
   comando_creacion = f"dotnet new sln -n {name_project}"
@@ -26,7 +45,7 @@ def create_project(name_project):
   # Referencias entre proyectos
   comando_reference_domain_to_application = f"dotnet add {name_project}.Application/{name_project}.Application.csproj reference {name_project}.Domain/{name_project}.Domain.csproj"
   comando_reference_persistence_to_application = f"dotnet add {name_project}.Application/{name_project}.Application.csproj reference {name_project}.Persistence/{name_project}.Persistence.csproj"
-  comando_reference_domain_to_persistence = f"dotnet add {name_project}.Domain/{name_project}.Domain.csproj reference {name_project}.Persistence/{name_project}.Persistence.csproj"
+  comando_reference_domain_to_persistence = f"dotnet add {name_project}.Persistence/{name_project}.Persistence.csproj reference {name_project}.Domain/{name_project}.Domain.csproj"
   comando_reference_application_to_webapi = f"dotnet add {name_project}.WebApi/{name_project}.WebApi.csproj reference {name_project}.Application/{name_project}.Application.csproj"
   comando_reference_persistence_to_webapi = f"dotnet add {name_project}.WebApi/{name_project}.WebApi.csproj reference {name_project}.Persistence/{name_project}.Persistence.csproj"
   # Instalar paquetes
@@ -71,4 +90,8 @@ def create_project(name_project):
 
 if __name__ == "__main__":
   name_project = input("Nombre del proyecto: ")
-  create_project(name_project)
+  # Si el nombre del proyecto es vacío, mandar mensaje de error
+  if name_project == "":
+    print("El nombre del proyecto no puede estar vacío")
+  else:
+    create_project(name_project)
